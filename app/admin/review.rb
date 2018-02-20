@@ -1,5 +1,7 @@
 ActiveAdmin.register Review do
 
+ permit_params :photographer_id, :client_id, :rating, :comment
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
