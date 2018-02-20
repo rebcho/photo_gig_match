@@ -78,7 +78,7 @@
           Genre
         </label>
 
-        <input type="text" id="genre_id" name="genre_id" placeholder="Genre" class="form-control" value="<%= @gig.genre_id %>">
+        <%= select_tag(:genre_id, options_from_collection_for_select(Genre.all, :id, :name, @gig.genre_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for sample_images -->
