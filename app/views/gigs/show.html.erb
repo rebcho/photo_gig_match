@@ -1,0 +1,46 @@
+<div class="page-header">
+  <h3>Gig #<%= @gig.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Client</dt>
+      <dd><%= @gig.client_id %></dd>
+
+      <dt>Location</dt>
+      <dd><%= @gig.location_id %></dd>
+
+      <dt>Name</dt>
+      <dd><%= @gig.name %></dd>
+
+      <dt>Description</dt>
+      <dd><%= @gig.description %></dd>
+
+      <dt>Budget</dt>
+      <dd><%= @gig.budget %></dd>
+
+      <dt>Time commitment</dt>
+      <dd><%= @gig.time_commitment %></dd>
+
+      <dt>Genre</dt>
+      <dd><%= @gig.genre_id %></dd>
+
+      <dt>Sample images</dt>
+      <dd><%= @gig.sample_images %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/gigs" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/gigs/<%= @gig.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_gig/<%= @gig.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="page-header">
+  <h1>
+    Gigs
+    <a href="/gigs/new" class="btn btn-lg btn-success">New Gig</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Client</th>
+        <th>Location</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Budget</th>
+        <th>Time commitment</th>
+        <th>Genre</th>
+        <th>Sample images</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @gigs.each do |gig| %>
+      <tr>
+        <td><%= gig.client_id %></td>
+        <td><%= gig.location_id %></td>
+        <td><%= gig.name %></td>
+        <td><%= gig.description %></td>
+        <td><%= gig.budget %></td>
+        <td><%= gig.time_commitment %></td>
+        <td><%= gig.genre_id %></td>
+        <td><%= gig.sample_images %></td>
+        <td>
+          <a href="/gigs/<%= gig.id %>" class="btn btn-primary">Show</a>
+          <a href="/gigs/<%= gig.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_gig/<%= gig.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

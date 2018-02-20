@@ -1,0 +1,100 @@
+<!-- Validation failure messages -->
+<% if @gig.errors.any? %>
+  <% @gig.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Gig</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_gig" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for client_id -->
+      <div class="form-group">
+        <label for="client_id" class="control-label">
+          Client
+        </label>
+
+        <input type="text" id="client_id" name="client_id" placeholder="Client" class="form-control" value="<%= @gig.client_id %>">
+      </div>
+
+      <!-- Label and input for location_id -->
+      <div class="form-group">
+        <label for="location_id" class="control-label">
+          Location
+        </label>
+
+        <input type="text" id="location_id" name="location_id" placeholder="Location" class="form-control" value="<%= @gig.location_id %>">
+      </div>
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @gig.name %>">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <input type="text" id="description" name="description" placeholder="Description" class="form-control" value="<%= @gig.description %>">
+      </div>
+
+      <!-- Label and input for budget -->
+      <div class="form-group">
+        <label for="budget" class="control-label">
+          Budget
+        </label>
+
+        <input type="text" id="budget" name="budget" placeholder="Budget" class="form-control" value="<%= @gig.budget %>">
+      </div>
+
+      <!-- Label and input for time_commitment -->
+      <div class="form-group">
+        <label for="time_commitment" class="control-label">
+          Time commitment
+        </label>
+
+        <input type="text" id="time_commitment" name="time_commitment" placeholder="Time commitment" class="form-control" value="<%= @gig.time_commitment %>">
+      </div>
+
+      <!-- Label and input for genre_id -->
+      <div class="form-group">
+        <label for="genre_id" class="control-label">
+          Genre
+        </label>
+
+        <input type="text" id="genre_id" name="genre_id" placeholder="Genre" class="form-control" value="<%= @gig.genre_id %>">
+      </div>
+
+      <!-- Label and input for sample_images -->
+      <div class="form-group">
+        <label for="sample_images" class="control-label">
+          Sample images
+        </label>
+
+        <input type="text" id="sample_images" name="sample_images" placeholder="Sample images" class="form-control" value="<%= @gig.sample_images %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Gig
+      </button>
+      or
+      <a href="/gigs">Cancel</a>
+    </form>
+  </div>
+</div>

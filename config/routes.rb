@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Gig resource:
+  # CREATE
+  get "/gigs/new", :controller => "gigs", :action => "new"
+  post "/create_gig", :controller => "gigs", :action => "create"
+
+  # READ
+  get "/gigs", :controller => "gigs", :action => "index"
+  get "/gigs/:id", :controller => "gigs", :action => "show"
+
+  # UPDATE
+  get "/gigs/:id/edit", :controller => "gigs", :action => "edit"
+  post "/update_gig/:id", :controller => "gigs", :action => "update"
+
+  # DELETE
+  get "/delete_gig/:id", :controller => "gigs", :action => "destroy"
+  #------------------------------
+
   devise_for :clients
   # Routes for the Client resource:
   # READ
