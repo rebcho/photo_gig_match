@@ -1,4 +1,6 @@
 class Gig < ApplicationRecord
+  mount_uploader :sample_images, SampleImageUploader
+
   # Direct associations
 
   belongs_to :project_type,

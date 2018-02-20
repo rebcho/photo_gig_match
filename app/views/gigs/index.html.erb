@@ -29,7 +29,7 @@
         <td><%= gig.budget %></td>
         <td><%= gig.time_commitment %></td>
         <td><%= gig.project_type.name %></td>
-        <td><%= gig.sample_images %></td>
+        <td><img src='<%= gig.sample_images %>' class='img-responsive'></td>
         <td>
           <a href="/gigs/<%= gig.id %>" class="btn btn-primary">Show</a>
           <a href="/gigs/<%= gig.id %>/edit" class="btn btn-warning">Edit</a>
