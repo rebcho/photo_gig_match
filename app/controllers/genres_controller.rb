@@ -1,6 +1,7 @@
 class GenresController < ApplicationController
   def index
-    @genres = Genre.page(params[:page]).per(10)
+    @q = Genre.ransack(params[:q])
+    @genres = @q.result(:distinct => true).includes(:gigs).page(params[:page]).per(10)
 
     render("genres/index.html.erb")
   end

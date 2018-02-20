@@ -1,6 +1,7 @@
 class GigsController < ApplicationController
   def index
-    @gigs = Gig.page(params[:page]).per(10)
+    @q = Gig.ransack(params[:q])
+    @gigs = @q.result(:distinct => true).includes(:client, :location, :project_type).page(params[:page]).per(10)
 
     render("gigs/index.html.erb")
   end
