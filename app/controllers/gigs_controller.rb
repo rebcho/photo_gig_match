@@ -1,6 +1,6 @@
 class GigsController < ApplicationController
   def index
-    @gigs = Gig.all
+    @gigs = Gig.page(params[:page]).per(10)
 
     render("gigs/index.html.erb")
   end

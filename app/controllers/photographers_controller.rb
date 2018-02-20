@@ -1,6 +1,6 @@
 class PhotographersController < ApplicationController
   def index
-    @photographers = Photographer.all
+    @photographers = Photographer.page(params[:page]).per(10)
   end
 
   def show

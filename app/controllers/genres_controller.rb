@@ -1,6 +1,6 @@
 class GenresController < ApplicationController
   def index
-    @genres = Genre.all
+    @genres = Genre.page(params[:page]).per(10)
 
     render("genres/index.html.erb")
   end
