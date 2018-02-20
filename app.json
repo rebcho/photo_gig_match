@@ -1,0 +1,1 @@
+{"name":"Photo Gig Match","repository":"https://github.com/rebcho/photo_gig_match","env":{"CLOUDINARY_CLOUD_NAME":{"required":true},"CLOUDINARY_API_KEY":{"required":true},"CLOUDINARY_API_SECRET":{"required":true},"ROLLBAR_ACCESS_TOKEN":{"required":true}}}
