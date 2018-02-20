@@ -12,7 +12,13 @@
       <dd><%= @client.password %></dd>
 
       <dt>Location</dt>
-      <dd><%= @client.location_id %></dd>
+      <dd>
+        <% if @client.location.present? %>
+          <a href="/locations/<%= @client.location_id %>">
+            <%= @client.location.city %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Name</dt>
       <dd><%= @client.name %></dd>

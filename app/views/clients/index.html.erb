@@ -20,7 +20,13 @@
       <tr>
         <td><%= client.email %></td>
         <td><%= client.password %></td>
-        <td><%= client.location.city %></td>
+        <td>
+          <% if client.location.present? %>
+            <a href="/locations/<%= client.location.id %>">
+              <%= client.location.city %>
+            </a>
+          <% end %>
+        </td>
         <td><%= client.name %></td>
         <td>
           <a href="/clients/<%= client.id %>" class="btn btn-primary">Show</a>

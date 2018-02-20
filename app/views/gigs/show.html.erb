@@ -6,10 +6,22 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Client</dt>
-      <dd><%= @gig.client_id %></dd>
+      <dd>
+        <% if @gig.client.present? %>
+          <a href="/clients/<%= @gig.client_id %>">
+            <%= @gig.client.email %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Location</dt>
-      <dd><%= @gig.location_id %></dd>
+      <dd>
+        <% if @gig.location.present? %>
+          <a href="/locations/<%= @gig.location_id %>">
+            <%= @gig.location.city %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Name</dt>
       <dd><%= @gig.name %></dd>
@@ -24,7 +36,13 @@
       <dd><%= @gig.time_commitment %></dd>
 
       <dt>Genre</dt>
-      <dd><%= @gig.genre_id %></dd>
+      <dd>
+        <% if @gig.project_type.present? %>
+          <a href="/genres/<%= @gig.genre_id %>">
+            <%= @gig.project_type.name %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Sample images</dt>
       <dd><img src="<%= @gig.sample_images %>" class="img-responsive"></dd>

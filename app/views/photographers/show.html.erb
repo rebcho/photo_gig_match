@@ -18,7 +18,13 @@
       <dd><%= @photographer.portfolio %></dd>
 
       <dt>Location</dt>
-      <dd><%= @photographer.location_id %></dd>
+      <dd>
+        <% if @photographer.location.present? %>
+          <a href="/locations/<%= @photographer.location_id %>">
+            <%= @photographer.location.city %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Expertise level</dt>
       <dd><%= @photographer.expertise_level %></dd>

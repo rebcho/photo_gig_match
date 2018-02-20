@@ -22,13 +22,31 @@
 
       <% @gigs.each do |gig| %>
       <tr>
-        <td><%= gig.client.email %></td>
-        <td><%= gig.location.city %></td>
+        <td>
+          <% if gig.client.present? %>
+            <a href="/clients/<%= gig.client.id %>">
+              <%= gig.client.email %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if gig.location.present? %>
+            <a href="/locations/<%= gig.location.id %>">
+              <%= gig.location.city %>
+            </a>
+          <% end %>
+        </td>
         <td><%= gig.name %></td>
         <td><%= gig.description %></td>
         <td><%= gig.budget %></td>
         <td><%= gig.time_commitment %></td>
-        <td><%= gig.project_type.name %></td>
+        <td>
+          <% if gig.project_type.present? %>
+            <a href="/genres/<%= gig.project_type.id %>">
+              <%= gig.project_type.name %>
+            </a>
+          <% end %>
+        </td>
         <td><img src='<%= gig.sample_images %>' class='img-responsive'></td>
         <td>
           <a href="/gigs/<%= gig.id %>" class="btn btn-primary">Show</a>

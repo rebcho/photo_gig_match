@@ -25,7 +25,13 @@
         <td><%= photographer.password %></td>
         <td><%= photographer.name %></td>
         <td><%= photographer.portfolio %></td>
-        <td><%= photographer.location.city %></td>
+        <td>
+          <% if photographer.location.present? %>
+            <a href="/locations/<%= photographer.location.id %>">
+              <%= photographer.location.city %>
+            </a>
+          <% end %>
+        </td>
         <td><%= photographer.expertise_level %></td>
         <td><%= photographer.charge_rate %></td>
         <td>

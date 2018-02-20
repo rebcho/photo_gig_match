@@ -18,8 +18,20 @@
 
       <% @reviews.each do |review| %>
       <tr>
-        <td><%= review.photographer.email %></td>
-        <td><%= review.client.email %></td>
+        <td>
+          <% if review.photographer.present? %>
+            <a href="/photographers/<%= review.photographer.id %>">
+              <%= review.photographer.email %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if review.client.present? %>
+            <a href="/clients/<%= review.client.id %>">
+              <%= review.client.email %>
+            </a>
+          <% end %>
+        </td>
         <td><%= review.rating %></td>
         <td><%= review.comment %></td>
         <td>
