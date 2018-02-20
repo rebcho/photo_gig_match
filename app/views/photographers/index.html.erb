@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h1>
+    Photographers
+    <a href="/photographers/new" class="btn btn-lg btn-success">New Photographer</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Name</th>
+        <th>Portfolio</th>
+        <th>Location</th>
+        <th>Expertise level</th>
+        <th>Charge rate</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @photographers.each do |photographer| %>
+      <tr>
+        <td><%= photographer.email %></td>
+        <td><%= photographer.password %></td>
+        <td><%= photographer.name %></td>
+        <td><%= photographer.portfolio %></td>
+        <td><%= photographer.location_id %></td>
+        <td><%= photographer.expertise_level %></td>
+        <td><%= photographer.charge_rate %></td>
+        <td>
+          <a href="/photographers/<%= photographer.id %>" class="btn btn-primary">Show</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

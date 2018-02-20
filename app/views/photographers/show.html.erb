@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h3>Photographer #<%= @photographer.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Email</dt>
+      <dd><%= @photographer.email %></dd>
+
+      <dt>Password</dt>
+      <dd><%= @photographer.password %></dd>
+
+      <dt>Name</dt>
+      <dd><%= @photographer.name %></dd>
+
+      <dt>Portfolio</dt>
+      <dd><%= @photographer.portfolio %></dd>
+
+      <dt>Location</dt>
+      <dd><%= @photographer.location_id %></dd>
+
+      <dt>Expertise level</dt>
+      <dd><%= @photographer.expertise_level %></dd>
+
+      <dt>Charge rate</dt>
+      <dd><%= @photographer.charge_rate %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/photographers" class="btn btn-primary">
+        Back
+      </a>
+    </div>
+  </div>
+</div>
