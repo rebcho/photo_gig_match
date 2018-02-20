@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Genre resource:
+  # CREATE
+  get "/genres/new", :controller => "genres", :action => "new"
+  post "/create_genre", :controller => "genres", :action => "create"
+
+  # READ
+  get "/genres", :controller => "genres", :action => "index"
+  get "/genres/:id", :controller => "genres", :action => "show"
+
+  # UPDATE
+  get "/genres/:id/edit", :controller => "genres", :action => "edit"
+  post "/update_genre/:id", :controller => "genres", :action => "update"
+
+  # DELETE
+  get "/delete_genre/:id", :controller => "genres", :action => "destroy"
+  #------------------------------
+
   # Routes for the Review resource:
   # CREATE
   get "/reviews/new", :controller => "reviews", :action => "new"
