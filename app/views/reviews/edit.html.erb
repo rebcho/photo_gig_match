@@ -24,7 +24,7 @@
           Photographer
         </label>
 
-        <input type="text" id="photographer_id" name="photographer_id" placeholder="Photographer" class="form-control" value="<%= @review.photographer_id %>">
+        <%= select_tag(:photographer_id, options_from_collection_for_select(Photographer.all, :id, :email, @review.photographer_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for client_id -->
