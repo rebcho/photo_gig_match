@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "gigs#index"
   # Routes for the Genre resource:
   # CREATE
   get "/genres/new", :controller => "genres", :action => "new"
