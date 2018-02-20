@@ -26,3 +26,65 @@
     </div>
   </div>
 </div>
+
+<!-- A Client has many gigs -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Gigs
+      </li>
+
+      <% @client.gigs.each do |gig| %>
+        <li class="list-group-item">
+          <a href="/gigs/<%= gig.id %>">
+            <%= gig.client_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/gigs/<%= gig.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/gigs/<%= gig.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_gig/<%= gig.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A Client has many reviews -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Reviews
+      </li>
+
+      <% @client.reviews.each do |review| %>
+        <li class="list-group-item">
+          <a href="/reviews/<%= review.id %>">
+            <%= review.photographer_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/reviews/<%= review.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/reviews/<%= review.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_review/<%= review.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
