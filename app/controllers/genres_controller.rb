@@ -6,6 +6,7 @@ class GenresController < ApplicationController
   end
 
   def show
+    @gig = Gig.new
     @genre = Genre.find(params[:id])
 
     render("genres/show.html.erb")

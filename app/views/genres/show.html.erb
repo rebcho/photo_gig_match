@@ -51,6 +51,83 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_gig" method="post" enctype="multipart/form-data">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for client_id -->
+      <div class="form-group">
+        <label for="client_id" class="control-label">
+          Client
+        </label>
+
+        <%= select_tag(:client_id, options_from_collection_for_select(Client.all, :id, :email), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for location_id -->
+      <div class="form-group">
+        <label for="location_id" class="control-label">
+          Location
+        </label>
+
+        <%= select_tag(:location_id, options_from_collection_for_select(Location.all, :id, :city), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <input type="text" id="description" name="description" placeholder="Description" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for budget -->
+      <div class="form-group">
+        <label for="budget" class="control-label">
+          Budget
+        </label>
+
+        <input type="text" id="budget" name="budget" placeholder="Budget" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for time_commitment -->
+      <div class="form-group">
+        <label for="time_commitment" class="control-label">
+          Time commitment
+        </label>
+
+        <input type="text" id="time_commitment" name="time_commitment" placeholder="Time commitment" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for genre_id -->
+      <input type="hidden" name="genre_id" value="<%= @genre.id %>">
+
+      <!-- Label and input for sample_images -->
+      <div class="form-group">
+        <label for="sample_images" class="control-label">
+          Sample images
+        </label>
+
+        <input type="file" id="sample_images" name="sample_images" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Gig
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
