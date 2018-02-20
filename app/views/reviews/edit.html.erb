@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @review.errors.any? %>
+  <% @review.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Review #<%= @review.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_review/<%= @review.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for photographer_id -->
+      <div class="form-group">
+        <label for="photographer_id" class="control-label">
+          Photographer
+        </label>
+
+        <input type="text" id="photographer_id" name="photographer_id" placeholder="Photographer" class="form-control" value="<%= @review.photographer_id %>">
+      </div>
+
+      <!-- Label and input for client_id -->
+      <div class="form-group">
+        <label for="client_id" class="control-label">
+          Client
+        </label>
+
+        <input type="text" id="client_id" name="client_id" placeholder="Client" class="form-control" value="<%= @review.client_id %>">
+      </div>
+
+      <!-- Label and input for rating -->
+      <div class="form-group">
+        <label for="rating" class="control-label">
+          Rating
+        </label>
+
+        <input type="text" id="rating" name="rating" placeholder="Rating" class="form-control" value="<%= @review.rating %>">
+      </div>
+
+      <!-- Label and input for comment -->
+      <div class="form-group">
+        <label for="comment" class="control-label">
+          Comment
+        </label>
+
+        <input type="text" id="comment" name="comment" placeholder="Comment" class="form-control" value="<%= @review.comment %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Review
+      </button>
+      or
+      <a href="/reviews/<%= @review.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
