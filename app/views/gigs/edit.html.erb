@@ -24,7 +24,7 @@
           Client
         </label>
 
-        <%= select_tag(:client_id, options_from_collection_for_select(Client.all, :id, :email, @gig.client_id), :class => "form-control") %>
+        <%= select_tag(:client_id, options_from_collection_for_select(Client.all, :id, :created_at, @gig.client_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for location_id -->
@@ -33,16 +33,16 @@
           Location
         </label>
 
-        <%= select_tag(:location_id, options_from_collection_for_select(Location.all, :id, :city, @gig.location_id), :class => "form-control") %>
+        <input type="text" id="location_id" name="location_id" placeholder="Location" class="form-control" value="<%= @gig.location_id %>">
       </div>
 
-      <!-- Label and input for name -->
+      <!-- Label and input for title -->
       <div class="form-group">
-        <label for="name" class="control-label">
-          Name
+        <label for="title" class="control-label">
+          Title
         </label>
 
-        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @gig.name %>">
+        <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @gig.title %>">
       </div>
 
       <!-- Label and input for description -->

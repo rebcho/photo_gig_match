@@ -5,6 +5,7 @@ class CreateReviews < ActiveRecord::Migration
       t.integer :client_id
       t.integer :rating
       t.string :comment
+      t.integer :gig_id
 
       t.timestamps
 

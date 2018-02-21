@@ -9,22 +9,16 @@
       <dd>
         <% if @gig.client.present? %>
           <a href="/clients/<%= @gig.client_id %>">
-            <%= @gig.client.email %>
+            <%= @gig.client.created_at %>
           </a>
         <% end %>
       </dd>
 
       <dt>Location</dt>
-      <dd>
-        <% if @gig.location.present? %>
-          <a href="/locations/<%= @gig.location_id %>">
-            <%= @gig.location.city %>
-          </a>
-        <% end %>
-      </dd>
+      <dd><%= @gig.location_id %></dd>
 
-      <dt>Name</dt>
-      <dd><%= @gig.name %></dd>
+      <dt>Title</dt>
+      <dd><%= @gig.title %></dd>
 
       <dt>Description</dt>
       <dd><%= @gig.description %></dd>
@@ -60,5 +54,59 @@
         Delete
       </a>
     </div>
+  </div>
+</div>
+
+<!-- A Gig has many applications -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Applications
+      </li>
+
+      <% @gig.applications.each do |application| %>
+        <li class="list-group-item">
+          <a href="/applications/<%= application.id %>">
+            <%= application.gig_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/applications/<%= application.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/applications/<%= application.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_application/<%= application.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_application" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for gig_id -->
+      <input type="hidden" name="gig_id" value="<%= @gig.id %>">
+
+      <!-- Label and input for photographer_id -->
+      <div class="form-group">
+        <label for="photographer_id" class="control-label">
+          Photographer
+        </label>
+
+        <%= select_tag(:photographer_id, options_from_collection_for_select(Photographer.all, :id, :email), :class => "form-control") %>
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Application
+      </button>
+    </form>
+      </li>
+    </ul>
   </div>
 </div>

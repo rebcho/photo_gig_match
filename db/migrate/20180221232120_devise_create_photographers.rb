@@ -36,7 +36,6 @@ class DeviseCreatePhotographers < ActiveRecord::Migration[5.0]
       t.string :password
       t.string :name
       t.string :portfolio
-      t.integer :location_id
       t.string :expertise_level
       t.string :charge_rate
 
