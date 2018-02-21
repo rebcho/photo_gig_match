@@ -1,15 +1,12 @@
 class LocationsController < ApplicationController
   def index
     @q = Location.ransack(params[:q])
-    @locations = @q.result(:distinct => true).includes(:gigs, :clients, :photographers).page(params[:page]).per(10)
+    @locations = @q.result(:distinct => true).page(params[:page]).per(10)
 
     render("locations/index.html.erb")
   end
 
   def show
-    @photographer = Photographer.new
-    @client = Client.new
-    @gig = Gig.new
     @location = Location.find(params[:id])
 
     render("locations/show.html.erb")
