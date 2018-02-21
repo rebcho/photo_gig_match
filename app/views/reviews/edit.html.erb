@@ -33,7 +33,7 @@
           Client
         </label>
 
-        <%= select_tag(:client_id, options_from_collection_for_select(Client.all, :id, :email, @review.client_id), :class => "form-control") %>
+        <%= select_tag(:client_id, options_from_collection_for_select(Client.all, :id, :created_at, @review.client_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for rating -->
@@ -52,6 +52,15 @@
         </label>
 
         <input type="text" id="comment" name="comment" placeholder="Comment" class="form-control" value="<%= @review.comment %>">
+      </div>
+
+      <!-- Label and input for gig_id -->
+      <div class="form-group">
+        <label for="gig_id" class="control-label">
+          Gig
+        </label>
+
+        <input type="text" id="gig_id" name="gig_id" placeholder="Gig" class="form-control" value="<%= @review.gig_id %>">
       </div>
 
       <button class="btn btn-warning">

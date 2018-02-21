@@ -1,6 +1,6 @@
 ActiveAdmin.register Photographer do
 
- permit_params :email, :password, :name, :portfolio, :location_id, :expertise_level, :charge_rate
+ permit_params :email, :password, :name, :portfolio, :expertise_level, :charge_rate
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

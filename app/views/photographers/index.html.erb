@@ -13,7 +13,6 @@
         <th>Password</th>
         <th>Name</th>
         <th>Portfolio</th>
-        <th>Location</th>
         <th>Expertise level</th>
         <th>Charge rate</th>
         <th>Actions</th>
@@ -25,13 +24,6 @@
         <td><%= photographer.password %></td>
         <td><%= photographer.name %></td>
         <td><%= photographer.portfolio %></td>
-        <td>
-          <% if photographer.location.present? %>
-            <a href="/locations/<%= photographer.location.id %>">
-              <%= photographer.location.city %>
-            </a>
-          <% end %>
-        </td>
         <td><%= photographer.expertise_level %></td>
         <td><%= photographer.charge_rate %></td>
         <td>
