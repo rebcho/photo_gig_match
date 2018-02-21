@@ -18,7 +18,7 @@
       <dd>
         <% if @review.client.present? %>
           <a href="/clients/<%= @review.client_id %>">
-            <%= @review.client.email %>
+            <%= @review.client.created_at %>
           </a>
         <% end %>
       </dd>
@@ -28,6 +28,12 @@
 
       <dt>Comment</dt>
       <dd><%= @review.comment %></dd>
+
+      <dt>Gig</dt>
+      <dd><%= @review.gig_id %></dd>
+
+      <dt>Reviewer</dt>
+      <dd><%= @review.reviewer %></dd>
 
     </dl>
 

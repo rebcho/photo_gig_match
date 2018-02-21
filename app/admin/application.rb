@@ -1,6 +1,6 @@
-ActiveAdmin.register Client do
+ActiveAdmin.register Application do
 
- permit_params :location_id, :name
+ permit_params :gig_id, :photographer_id
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

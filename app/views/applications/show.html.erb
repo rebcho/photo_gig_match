@@ -1,0 +1,71 @@
+<div class="page-header">
+  <h3>Application #<%= @application.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Gig</dt>
+      <dd>
+        <% if @application.gig.present? %>
+          <a href="/gigs/<%= @application.gig_id %>">
+            <%= @application.gig.client_id %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>Photographer</dt>
+      <dd>
+        <% if @application.photographer.present? %>
+          <a href="/photographers/<%= @application.photographer_id %>">
+            <%= @application.photographer.email %>
+          </a>
+        <% end %>
+      </dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/applications" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/applications/<%= @application.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_application/<%= @application.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- A Application has many client -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Client
+      </li>
+
+      <% @application.client.each do |client| %>
+        <li class="list-group-item">
+          <a href="/clients/<%= client.id %>">
+            <%= client.created_at %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/clients/<%= client.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/clients/<%= client.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_client/<%= client.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

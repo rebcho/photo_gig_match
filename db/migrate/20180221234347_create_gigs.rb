@@ -3,7 +3,7 @@ class CreateGigs < ActiveRecord::Migration
     create_table :gigs do |t|
       t.integer :client_id
       t.integer :location_id
-      t.string :name
+      t.string :title
       t.string :description
       t.string :budget
       t.string :time_commitment
