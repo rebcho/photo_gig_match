@@ -7,7 +7,8 @@ class Gig < ApplicationRecord
              :class_name => "Genre",
              :foreign_key => "genre_id"
 
-  belongs_to :location
+  has_many   :applications,
+             :dependent => :destroy
 
   belongs_to :client
 

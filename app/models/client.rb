@@ -1,8 +1,6 @@
 class Client < ApplicationRecord
   # Direct associations
 
-  belongs_to :location
-
   has_many   :reviews,
              :dependent => :destroy
 
@@ -11,10 +9,10 @@ class Client < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :received_applications,
+             :through => :gigs,
+             :source => :applications
+
   # Validations
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
 end

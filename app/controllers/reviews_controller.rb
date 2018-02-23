@@ -25,6 +25,8 @@ class ReviewsController < ApplicationController
     @review.client_id = params[:client_id]
     @review.rating = params[:rating]
     @review.comment = params[:comment]
+    @review.gig_id = params[:gig_id]
+    @review.reviewer = params[:reviewer]
 
     save_status = @review.save
 
@@ -55,6 +57,8 @@ class ReviewsController < ApplicationController
     @review.client_id = params[:client_id]
     @review.rating = params[:rating]
     @review.comment = params[:comment]
+    @review.gig_id = params[:gig_id]
+    @review.reviewer = params[:reviewer]
 
     save_status = @review.save
 

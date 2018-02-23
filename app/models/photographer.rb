@@ -1,7 +1,8 @@
 class Photographer < ApplicationRecord
   # Direct associations
 
-  belongs_to :location
+  has_many   :applications,
+             :dependent => :destroy
 
   has_many   :reviews,
              :dependent => :destroy

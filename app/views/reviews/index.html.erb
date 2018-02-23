@@ -9,6 +9,23 @@
       <p class="lead">Narrow results:</p>
 
         <div class="form-group">
+    <%= f.label :reviewer_cont, "Reviewer contains" %>
+    <%= f.text_field :reviewer_cont, :class => "form-control", :placeholder => "Reviewer contains" %>
+  </div>
+
+<div class="form-group">
+  <%= f.label :gig_id, "Gig" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :gig_id_gteq, :class => "form-control", :placeholder => "Gig greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :gig_id_lteq, :class => "form-control", :placeholder => "Gig less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
     <%= f.label :comment_cont, "Comment contains" %>
     <%= f.text_field :comment_cont, :class => "form-control", :placeholder => "Comment contains" %>
   </div>
@@ -71,9 +88,44 @@
     </div>
 
 <div class="form-group">
-      <%= f.label :client_email_cont, "Client email contains" %>
-      <%= f.text_field :client_email_cont, :class => "form-control", :placeholder => "Client email contains" %>
-    </div>
+          <%= f.label :created_at, "Client Created at" %>
+          <div class="row">
+            <div class='col-md-6 mb-1'>
+              <div class='input-group date' id='clientgteqcreated_atPicker'>
+                  <%= f.text_field :client_created_at_gteq, :class => "form-control", :placeholder => "Client Created at greater than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+
+            <div class='col-md-6'>
+              <div class='input-group date' id='clientlteqcreated_atPicker'>
+                  <%= f.text_field :client_created_at_lteq, :class => "form-control", :placeholder => "Client Created at less than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+          </div>
+      </div>
+      <script type="text/javascript">
+          $(function () {
+              $('#clientgteqcreated_atPicker').datetimepicker({
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#clientlteqcreated_atPicker').datetimepicker({
+                  useCurrent: false,
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#clientgteqcreated_atPicker').on("dp.change", function (e) {
+                  $('#clientlteqcreated_atPicker').data("DateTimePicker").minDate(e.date);
+              });
+              $('#clientlteqcreated_atPicker').on("dp.change", function (e) {
+                  $('#clientgteqcreated_atPicker').data("DateTimePicker").maxDate(e.date);
+              });
+          });
+      </script>
 
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
@@ -93,6 +145,8 @@
         <th>Client</th>
         <th>Rating</th>
         <th>Comment</th>
+        <th>Gig</th>
+        <th>Reviewer</th>
         <th>Actions</th>
       </tr>
 
@@ -108,12 +162,14 @@
         <td>
           <% if review.client.present? %>
             <a href="/clients/<%= review.client.id %>">
-              <%= review.client.email %>
+              <%= review.client.created_at %>
             </a>
           <% end %>
         </td>
         <td><%= review.rating %></td>
         <td><%= review.comment %></td>
+        <td><%= review.gig_id %></td>
+        <td><%= review.reviewer %></td>
         <td>
           <a href="/reviews/<%= review.id %>" class="btn btn-primary">Show</a>
           <a href="/reviews/<%= review.id %>/edit" class="btn btn-warning">Edit</a>
