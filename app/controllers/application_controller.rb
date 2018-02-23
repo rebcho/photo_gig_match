@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, :keys => [:name, :portfolio, :location_id, :expertise_level, :charge_rate])
+    devise_parameter_sanitizer.permit(:sign_up, :keys => [:name, :portfolio, :expertise_level, :charge_rate, :location])
 
-    devise_parameter_sanitizer.permit(:account_update, :keys => [:name, :portfolio, :location_id, :expertise_level, :charge_rate])
+    devise_parameter_sanitizer.permit(:account_update, :keys => [:name, :portfolio, :expertise_level, :charge_rate, :location])
   end
 end

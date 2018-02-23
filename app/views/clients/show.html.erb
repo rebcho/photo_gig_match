@@ -5,20 +5,8 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Email</dt>
-      <dd><%= @client.email %></dd>
-
-      <dt>Password</dt>
-      <dd><%= @client.password %></dd>
-
       <dt>Location</dt>
-      <dd>
-        <% if @client.location.present? %>
-          <a href="/locations/<%= @client.location_id %>">
-            <%= @client.location.city %>
-          </a>
-        <% end %>
-      </dd>
+      <dd><%= @client.location %></dd>
 
       <dt>Name</dt>
       <dd><%= @client.name %></dd>
@@ -28,6 +16,12 @@
     <div class="btn-group btn-group-justified">
       <a href="/clients" class="btn btn-primary">
         Back
+      </a>
+      <a href="/clients/<%= @client.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_client/<%= @client.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
       </a>
     </div>
   </div>
@@ -60,6 +54,83 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_gig" method="post" enctype="multipart/form-data">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for client_id -->
+      <input type="hidden" name="client_id" value="<%= @client.id %>">
+
+      <!-- Label and input for location -->
+      <div class="form-group">
+        <label for="location" class="control-label">
+          Location
+        </label>
+
+        <input type="text" id="location" name="location" placeholder="Location" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for title -->
+      <div class="form-group">
+        <label for="title" class="control-label">
+          Title
+        </label>
+
+        <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <input type="text" id="description" name="description" placeholder="Description" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for budget -->
+      <div class="form-group">
+        <label for="budget" class="control-label">
+          Budget
+        </label>
+
+        <input type="text" id="budget" name="budget" placeholder="Budget" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for time_commitment -->
+      <div class="form-group">
+        <label for="time_commitment" class="control-label">
+          Time commitment
+        </label>
+
+        <input type="text" id="time_commitment" name="time_commitment" placeholder="Time commitment" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for genre_id -->
+      <div class="form-group">
+        <label for="genre_id" class="control-label">
+          Genre
+        </label>
+
+        <%= select_tag(:genre_id, options_from_collection_for_select(Genre.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for sample_images -->
+      <div class="form-group">
+        <label for="sample_images" class="control-label">
+          Sample images
+        </label>
+
+        <input type="file" id="sample_images" name="sample_images" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Gig
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
@@ -86,6 +157,96 @@
               <i class="fa fa-edit"></i>
             </a>
             <a href="/delete_review/<%= review.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_review" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for photographer_id -->
+      <div class="form-group">
+        <label for="photographer_id" class="control-label">
+          Photographer
+        </label>
+
+        <%= select_tag(:photographer_id, options_from_collection_for_select(Photographer.all, :id, :email), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for client_id -->
+      <input type="hidden" name="client_id" value="<%= @client.id %>">
+
+      <!-- Label and input for rating -->
+      <div class="form-group">
+        <label for="rating" class="control-label">
+          Rating
+        </label>
+
+        <input type="text" id="rating" name="rating" placeholder="Rating" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for comment -->
+      <div class="form-group">
+        <label for="comment" class="control-label">
+          Comment
+        </label>
+
+        <input type="text" id="comment" name="comment" placeholder="Comment" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for gig_id -->
+      <div class="form-group">
+        <label for="gig_id" class="control-label">
+          Gig
+        </label>
+
+        <input type="text" id="gig_id" name="gig_id" placeholder="Gig" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for reviewer -->
+      <div class="form-group">
+        <label for="reviewer" class="control-label">
+          Reviewer
+        </label>
+
+        <input type="text" id="reviewer" name="reviewer" placeholder="Reviewer" class="form-control" value="">
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Review
+      </button>
+    </form>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- A Client has many received_applications -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Received Applications
+      </li>
+
+      <% @client.received_applications.each do |application| %>
+        <li class="list-group-item">
+          <a href="/applications/<%= application.id %>">
+            <%= application.gig_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/applications/<%= application.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/applications/<%= application.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_application/<%= application.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
             </a>
           </div>

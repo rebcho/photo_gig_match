@@ -17,20 +17,14 @@
       <dt>Portfolio</dt>
       <dd><%= @photographer.portfolio %></dd>
 
-      <dt>Location</dt>
-      <dd>
-        <% if @photographer.location.present? %>
-          <a href="/locations/<%= @photographer.location_id %>">
-            <%= @photographer.location.city %>
-          </a>
-        <% end %>
-      </dd>
-
       <dt>Expertise level</dt>
       <dd><%= @photographer.expertise_level %></dd>
 
       <dt>Charge rate</dt>
       <dd><%= @photographer.charge_rate %></dd>
+
+      <dt>Location</dt>
+      <dd><%= @photographer.location %></dd>
 
     </dl>
 
@@ -64,6 +58,37 @@
               <i class="fa fa-edit"></i>
             </a>
             <a href="/delete_review/<%= review.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A Photographer has many applications -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Applications
+      </li>
+
+      <% @photographer.applications.each do |application| %>
+        <li class="list-group-item">
+          <a href="/applications/<%= application.id %>">
+            <%= application.gig_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/applications/<%= application.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/applications/<%= application.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_application/<%= application.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
             </a>
           </div>

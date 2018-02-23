@@ -1,12 +1,13 @@
 class GigsController < ApplicationController
   def index
     @q = Gig.ransack(params[:q])
-    @gigs = @q.result(:distinct => true).includes(:client, :location, :project_type).page(params[:page]).per(10)
+    @gigs = @q.result(:distinct => true).includes(:client, :applications, :project_type).page(params[:page]).per(10)
 
     render("gigs/index.html.erb")
   end
 
   def show
+    @application = Application.new
     @gig = Gig.find(params[:id])
 
     render("gigs/show.html.erb")
@@ -22,8 +23,8 @@ class GigsController < ApplicationController
     @gig = Gig.new
 
     @gig.client_id = params[:client_id]
-    @gig.location_id = params[:location_id]
-    @gig.name = params[:name]
+    @gig.location = params[:location]
+    @gig.title = params[:title]
     @gig.description = params[:description]
     @gig.budget = params[:budget]
     @gig.time_commitment = params[:time_commitment]
@@ -56,8 +57,8 @@ class GigsController < ApplicationController
     @gig = Gig.find(params[:id])
 
     @gig.client_id = params[:client_id]
-    @gig.location_id = params[:location_id]
-    @gig.name = params[:name]
+    @gig.location = params[:location]
+    @gig.title = params[:title]
     @gig.description = params[:description]
     @gig.budget = params[:budget]
     @gig.time_commitment = params[:time_commitment]

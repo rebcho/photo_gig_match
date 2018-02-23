@@ -1,6 +1,6 @@
 ActiveAdmin.register Gig do
 
- permit_params :client_id, :location_id, :name, :description, :budget, :time_commitment, :genre_id, :sample_images
+ permit_params :client_id, :location, :title, :description, :budget, :time_commitment, :genre_id, :sample_images
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

@@ -63,25 +63,25 @@
           Client
         </label>
 
-        <%= select_tag(:client_id, options_from_collection_for_select(Client.all, :id, :email), :class => "form-control") %>
+        <%= select_tag(:client_id, options_from_collection_for_select(Client.all, :id, :created_at), :class => "form-control") %>
       </div>
 
-      <!-- Label and input for location_id -->
+      <!-- Label and input for location -->
       <div class="form-group">
-        <label for="location_id" class="control-label">
+        <label for="location" class="control-label">
           Location
         </label>
 
-        <%= select_tag(:location_id, options_from_collection_for_select(Location.all, :id, :city), :class => "form-control") %>
+        <input type="text" id="location" name="location" placeholder="Location" class="form-control" value="">
       </div>
 
-      <!-- Label and input for name -->
+      <!-- Label and input for title -->
       <div class="form-group">
-        <label for="name" class="control-label">
-          Name
+        <label for="title" class="control-label">
+          Title
         </label>
 
-        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="">
+        <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="">
       </div>
 
       <!-- Label and input for description -->
